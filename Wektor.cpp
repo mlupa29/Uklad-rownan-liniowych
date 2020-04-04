@@ -31,10 +31,18 @@ double Wektor::operator *(Wektor W)
 
 Wektor Wektor::operator /(double skalar)
 {
-    Wektor Wynik;
-    for (int i = 0; i < ROZMIAR; i++)
-        Wynik[i] = Tab[i] / skalar;
-    return Wynik;
+    //Nie wiem czy nie zaagresywne bo konczy dzialanie calego programu???
+    if (skalar == 0)
+    {
+        std::cerr << "skalar musi byc rozny !=0";
+        std::exit(EXIT_FAILURE);
+    }
+    else {
+        Wektor Wynik;
+        for (int i = 0; i < ROZMIAR; i++)
+            Wynik[i] = Tab[i] / skalar;
+        return Wynik;
+    }
 }
 
 Wektor Wektor::operator *(double skalar)
