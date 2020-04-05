@@ -11,6 +11,7 @@ class Macierz {
     Wektor Tab[ROZMIAR];
   
 public:
+    Macierz();
     Wektor operator[] (int i) const;
     Wektor& operator[] (int i);
 

@@ -14,6 +14,8 @@ class Wektor {
     double Tab[ROZMIAR];
 
 public:
+    Wektor();
+    Wektor(double x, double y, double z);
     double operator[] (int i) const;
     double& operator[] (int i);
 

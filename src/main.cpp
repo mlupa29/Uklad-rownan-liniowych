@@ -18,17 +18,15 @@ using namespace std;
 int main()
 {
 
-    Wektor W;
+    Wektor W(1,1,1);
     Macierz M;
-    cout << "Wprowadzenie wektora(>>)" << endl;
-    cin >> W;
     cout << "Wprowadzenie macierzy(>>)" << endl;
     for (int i = 0; i < ROZMIAR; i++) {
         cin >> M[i];
     }
 
     cout << endl << " Start programu " << endl << endl;
-    cout << "Dzialanie wektora(<<)" << endl;
+    cout << "Dzialanie wektora(<<) i konstruktor domyslny" << endl;
     cout << W << endl << "//////////////" << endl;
     cout << "Dzialanie macierzy(<<)" << endl;
     cout << M << endl;

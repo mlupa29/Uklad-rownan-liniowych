@@ -1,12 +1,21 @@
 #include "Wektor.hh"
 
 
-/*
- *  Tutaj nalezy zdefiniowac odpowiednie metody
- *  klasy Wektor, ktore zawieraja wiecej kodu
- *  niz dwie linijki.
- *  Mniejsze metody mozna definiwac w ciele klasy.
- */
+Wektor::Wektor()
+{
+    Tab[0] = 0;
+    Tab[1] = 0;
+    Tab[2] = 0;
+}
+
+Wektor::Wektor(double x, double y, double z)
+{
+    Tab[0] = x;
+    Tab[1] = y;
+    Tab[2] = z;
+}
+
+
 Wektor Wektor::operator +(Wektor W)
 {
     Wektor Wynik;

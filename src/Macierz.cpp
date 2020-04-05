@@ -1,5 +1,10 @@
 #include "Macierz.hh"
 
+Macierz::Macierz()
+{
+	
+}
+
 Wektor Macierz::operator[] (int i) const
 {
     return Tab[i];
