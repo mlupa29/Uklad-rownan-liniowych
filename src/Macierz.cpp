@@ -14,13 +14,39 @@ Wektor & Macierz::operator[] (int i)
     return Tab[i];
 }
 
+
+//Algorytm Wyznacznika Metody Gaussa
 double Macierz::Wyznacznik() const
 {
-    double sp_sum = 0;
-    double sm_sum = 0;
-    sp_sum = (Tab[0])[0] * (Tab[1])[1] * (Tab[2])[2] + (Tab[0])[1] * (Tab[1])[2] * (Tab[2])[0] + (Tab[0])[2] * (Tab[1])[0] * (Tab[2])[1];
-    sm_sum = (Tab[2])[0] * (Tab[1])[1] * (Tab[0])[2] + (Tab[2])[1] * (Tab[1])[2] * (Tab[0])[0] + (Tab[2])[2] * (Tab[1])[0] * (Tab[0])[1];
-    return sp_sum - sm_sum;
+    Macierz kop = *this;
+    int p = 0;
+    for (int i = 0; i < ROZMIAR; i++)
+    {
+        for (int j = i + 1; j < ROZMIAR; j++)
+        {
+            if (kop[i][i] == 0)
+            {
+                p++;
+                std::swap(kop[i], kop[j]);
+            }
+        }
+        if (kop[i][i] == 0)
+            return 0;
+        for (int j = i + 1; j < ROZMIAR; j++)
+        {
+            kop[j] = kop[j] - kop[i] * kop[j][i] / kop[i][i];
+        }
+    }
+    double wyznacznik = 1;
+    for (int i = 0; i < ROZMIAR; i++)
+    {
+        wyznacznik *= kop[i][i];
+    }
+    if (p % 2 == 0)
+    {
+        return wyznacznik;
+    }
+    return -wyznacznik;
 }
 
 
@@ -35,6 +61,20 @@ void Macierz::Transpozycja(Macierz & Mc) {
     }
 }
 
+//Macierz * Wertor
+Wektor  Macierz::operator * (const Wektor& W)
+{
+    Transpozycja(*this);
+    Wektor wynik;
+    for (int i = 0; i < ROZMIAR; i++)
+        wynik[i] = Tab[i] * W;
+
+    return wynik;
+
+}
+
+//Okazaly sie niepotrzebne dla Gaussa
+/*
 Macierz const Macierz::operator+(const Macierz & W)const {
     Macierz S;
     for (int i = 0; i < ROZMIAR; i++) {
@@ -70,7 +110,7 @@ Macierz const Macierz::operator*(const Macierz & W)const {
     }
     return S;
 }
-
+*/
 std::istream & operator >> (std::istream & Strm, Macierz & Mac)
 {
     for (int i = 0; i < ROZMIAR; i++)

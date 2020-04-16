@@ -4,7 +4,7 @@
 #include "rozmiar.h"
 #include <iostream>
 #include "Wektor.hh"
-
+#include <algorithm>
 
 class Macierz {
 
@@ -18,9 +18,11 @@ public:
     double Wyznacznik() const;
     void Transpozycja(Macierz & Mc);
 
-    const Macierz  operator + (const Macierz & W) const;
+   /* const Macierz  operator + (const Macierz & W) const;
     const Macierz  operator - (const Macierz & W) const;
     const Macierz  operator * (const Macierz & W) const;
+   */
+    Wektor  operator * (const Wektor& W);
 };
 
 std::istream& operator >> (std::istream & Strm, Macierz & Mac);
